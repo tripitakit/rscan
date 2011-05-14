@@ -1,18 +1,20 @@
-rscan
-======
+rscan - version: 0.1
 
-Performs scoring and color masking of multiple sequence alignments, to help in signature-sequence search, 
-Requires ruby, rubygems, bio, rainbow; 
-Runs in irb in a terminal emulator with ANSI color support.
+Performs nucleotide scoring and color masking in multiple sequence alignments, to help in DNA signature search.
+Runs within irb, in a terminal emulator with ANSI color support.
+Requires gems: bio, rainbow.
 
-  irb -r ./rscan.rb
 
-Default scoring formula = 1 - (ka/5)*(1-a) - (kb/10)*b
-Scoring parameters:
-a: frequency of nt_base in the ingroup (consenus)
-b: frequency of nt_base in the outgroup  (aspecificity)
-ka: consensus coefficient : 20 :strict, 10 :high (majority rule high), 3 :low (majority rule low)
-kb: aspecificity tollerance coefficient : 0 :allow , 10 :penalty (allowed with penality), 20 :forbid (not allowed)
+Usage:  irb -r rscan
+
+
+Required input: a fasta formatted  multiple sequence (DNA) alignment. Groups definitions.
+
+Default scoring formula =  1 - (ka/5)*(1-a) - (kb/10)*b
+	* a: frequency of nt_base in the ingroup (consenus)
+	* b: frequency of nt_base in the outgroup  (aspecificity)
+	* ka: consensus coefficient : 20 :strict, 10 :high (majority rule high), 3 :low (majority rule low)
+	* kb: aspecificity tollerance coefficient : 0 :allow , 10 :penalty (allowed with penality), 20 :forbid (not allowed)
 
 
 IRB user interface command list:
@@ -26,7 +28,7 @@ Alignment and groups
     # >> open "test.fasta"
   
   labels?
-    # print the sequences labels
+    # print the sequences' index and label
     # usage:
     # >> labels?
     
@@ -35,15 +37,15 @@ Alignment and groups
     # usage:
     # >> groups?
 
-  set_groups [arrays|ranges]
+  set_groups [arrays and/or ranges]
     # set the groups of sequences, expects an array of arrays or ranges
     # usage, with a 16 sequences alignemnt:
     # >> set_groups [0..4, 5..9, 10..15]
     # >> set_groups [0..4, [5,6,7], 8..14, [15]]
   
   
-Consensus coefficient ka
--------------------------
+Set Consensus coefficient (ka)
+------------------------------
   con :preset_value
     # use a preset value for consensus coefficient ka
     # expects a symbol [:strict | :high | :low]
@@ -58,8 +60,8 @@ Consensus coefficient ka
     # >> ka 10
     
     
-Aspecificity tollerance coefficient kb
----------------------------------------  
+Set Aspecificity-tollerance coefficient (kb)
+-------------------------------------------- 
   asp :preset_value
     # use a preset value for aspecificity tollerance coefficient kb
     # expects a symbol [:forbid | :penalty | :allow]
@@ -116,4 +118,4 @@ Utilities
   test
     # perform a test scan 
     # usage:
-    # >> test
+    # >> test	
