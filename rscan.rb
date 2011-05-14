@@ -9,7 +9,7 @@ require "./signs"
 
 def clear
   system "clear"
-  puts "Signs 0.1 :: Alignment shader for signature-sequence search.".color(:blue)
+  puts "rscan 0.1 :: Alignment shader for signature-sequence search.".color(:blue)
   puts "\n[QuickHelp: type man for the list of commands]".color(:magenta)
   puts "\n"
   return Time.now
