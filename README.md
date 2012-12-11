@@ -2,14 +2,17 @@ rscan - version: 0.1
 
 Performs nucleotide scoring and color masking in multiple sequence alignments, to help in DNA signature search.
 Runs within irb, in a terminal emulator with ANSI color support.
+
 Requires gems: bio, rainbow.
 
 
-Usage:  irb -r rscan
+Usage:
+------
+  ./rscan
 
-
-Required input: a fasta formatted  multiple sequence (DNA) alignment. Groups definitions.
-
+Input:
+------
+Multiple DNA-sequence alignment fasta-formatted file. Groups definitions.
 Default scoring formula =  1 - (ka/5)*(1-a) - (kb/10)*b
 	* a: frequency of nt_base in the ingroup (consenus)
 	* b: frequency of nt_base in the outgroup  (aspecificity)
